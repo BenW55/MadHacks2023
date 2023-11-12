@@ -60,6 +60,18 @@
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
 }
 
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.spinning {
+  animation: spin 2s infinite linear;
+}
 /* Responsive adjustments */
 @media (max-width: 768px) {
   .title {
@@ -72,16 +84,27 @@
 }
 .result
 {
-  border: solid, 2px,  #333;
+  max-width: 100%; /* Ensure the result div doesn't exceed the width of its parent */
+  padding: 1rem; /* Adds padding inside the result div */
+  overflow: auto; /* Adds a scrollbar if content overflows */
   text-align: center;
 }
 .container {
+  width: 100%; /* Adjust as needed */
+  max-width: 1200px; /* Adjust as needed */
+  margin: auto; /* Centers the container */
+  padding: 1rem; /* Adds space inside the container */
+  overflow: hidden; /* Hides content that overflows */
   background-color: rgba(180, 180, 180, 0.7);
-  z-index: 1;
-  width: 70vw;
-  height: 60vh;
-  border-radius: 30px;
-  position: static;
-  top: 100px;
+  border-radius: 12%;
 
 } 
+.logo{
+  height:33vh;
+  width: 60vw;
+}
+.data{
+  word-wrap: break-word; /* Breaks long words to prevent overflow */
+  white-space: normal; /* Ensures text wraps naturally */
+  font-size: 1rem; /* Adjust font size as necessary */
+}

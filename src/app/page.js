@@ -5,10 +5,10 @@ import { useState } from 'react';
 import PDFUploadForm from '@/components/PromptForm'; // Assuming you have updated the form component name
 export default function Home() {
     const [choices, setChoices] = useState([]);
-
+    const [isSpinning, setIsSpinning] = useState(false);
     const handlePDFSubmit = async (file) => {
         const formData = new FormData();
-
+        setIsSpinning(true);
         formData.append('files', file);
         try {
             const response = await fetch("http://localhost:4000/chat-gpt", {
@@ -21,6 +21,8 @@ export default function Home() {
 
         } catch (error) {
             console.error("An error occurred while uploading the file:", error);
+        }finally{
+          setIsSpinning(false);
         }
     };
 
@@ -28,17 +30,17 @@ export default function Home() {
     <main className={styles.main}>
     <div className={styles.container}>
       <header className={styles.header}>
-        <Image src="/logo.png" width={883.941605839} height={300} objectPosition='center'/>
+        <img src="/logo.png" className= {styles.logo}/>
 
 
       </header>
-      <div className={styles.result}>
+        <div className={styles.result}>
       <PDFUploadForm onSubmit={handlePDFSubmit} />
       {choices.map((choice, index) => (
-          <p key={index}>{choice.message.content}</p> // Fixed the key prop
+          <p className={styles.data} key={index}>{choice.message.content}</p> // Fixed the key prop
       ))}
-      </div>
-      </div>
+          </div>
+    </div>
       </main>
     );
 }

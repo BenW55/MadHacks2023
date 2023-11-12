@@ -34,6 +34,7 @@ function PDFUploadForm({ onSubmit }) {
                 onChange={handleFileChange}
             />
             <input className={`${styles.button} ${styles.chooseFileButton}`}type="submit" value="Upload"/>
+           
         </form>
     );
 }
