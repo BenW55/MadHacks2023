@@ -5,10 +5,8 @@ import { useState } from 'react';
 import PDFUploadForm from '@/components/PromptForm'; // Assuming you have updated the form component name
 export default function Home() {
     const [choices, setChoices] = useState([]);
-const [isSpinning, setIsSpinning] = useState(false);
 
     const handlePDFSubmit = async (file) => {
-      setIsSpinning(true);
         const formData = new FormData();
 
         formData.append('files', file);
@@ -19,31 +17,26 @@ const [isSpinning, setIsSpinning] = useState(false);
                 body: formData
             });
             const result = await response.json();
+            setChoices(result.choices);
+
         } catch (error) {
             console.error("An error occurred while uploading the file:", error);
-        } finally{
-          setIsSpinning(false);
         }
     };
 
     return (
     <main className={styles.main}>
       <header className={styles.header}>
-        <h1 className={styles.title}>Resume Wizard!</h1>
-        <Image
-        src="/wizardTransparent.png"
-        alt="Wizard Image"
-        width={100}
-        height={58}
-        layout="intrinsic"
-        className={isSpinning ? styles.spinning : ''}
-        />
+        <Image src="/logo.png" width={883.941605839} height={300}/>
+
 
       </header>
+      <div className={styles.result}>
       <PDFUploadForm onSubmit={handlePDFSubmit} />
       {choices.map((choice, index) => (
           <p key={index}>{choice.message.content}</p> // Fixed the key prop
       ))}
+      </div>
       </main>
     );
 }

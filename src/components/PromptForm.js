@@ -1,4 +1,5 @@
 import {useState} from "react";
+import styles from '/src/app/page.module.css';
 
 function PDFUploadForm({ onSubmit }) {
     const [file, setFile] = useState(null);
@@ -32,7 +33,7 @@ function PDFUploadForm({ onSubmit }) {
                 accept="application/pdf"
                 onChange={handleFileChange}
             />
-            <input type="submit" value="Upload"/>
+            <input className={`${styles.button} ${styles.chooseFileButton}`}type="submit" value="Upload"/>
         </form>
     );
 }
