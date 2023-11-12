@@ -1,5 +1,7 @@
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
+You can upload your tech resume and it'll provide feedback using GPT-4 API
+
 ## Getting Started
 
 First, run the development server:
