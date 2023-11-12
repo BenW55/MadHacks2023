@@ -26,8 +26,9 @@ export default function Home() {
 
     return (
     <main className={styles.main}>
+    <div className={styles.container}>
       <header className={styles.header}>
-        <Image src="/logo.png" width={883.941605839} height={300}/>
+        <Image src="/logo.png" width={883.941605839} height={300} objectPosition='center'/>
 
 
       </header>
@@ -36,6 +37,7 @@ export default function Home() {
       {choices.map((choice, index) => (
           <p key={index}>{choice.message.content}</p> // Fixed the key prop
       ))}
+      </div>
       </div>
       </main>
     );

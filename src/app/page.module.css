@@ -7,7 +7,9 @@
   justify-content: center;
   padding: 2rem;
   min-height: 100vh;
-  background-color: #f0f4f8; /* Soft background color */
+  background-image: url("/spookybackground.jpeg"); /* Soft background color */
+  background-repeat: no-repeat;
+  background-size: cover;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; /* Modern and readable font */
 }
 
@@ -71,4 +73,15 @@
 .result
 {
   border: solid, 2px,  #333;
+  text-align: center;
 }
+.container {
+  background-color: rgba(180, 180, 180, 0.7);
+  z-index: 1;
+  width: 70vw;
+  height: 60vh;
+  border-radius: 30px;
+  position: static;
+  top: 100px;
+
+} 
