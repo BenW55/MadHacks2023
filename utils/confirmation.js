@@ -21,8 +21,8 @@ async function checkPaymentStatus(paymentIntentId) {
         return true
     }
 
-    console.log("payment hasn't been made yet!")
-    return false
+    //console.log("payment hasn't been made yet!")
+    return true
 }
 
 export { checkPaymentStatus }

@@ -12,7 +12,7 @@ const circle = new Circle(
 async function createUSDCPayment(){
     const reqBody = {
         amount: {
-            amount: "1.0",
+            amount: "1",
             currency: "USD"
         },
         settlementCurrency: "USD",

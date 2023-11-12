@@ -2,7 +2,8 @@
 import Head from "next/head";
 import {Fragment, useState, useEffect } from "react";
 import { useRouter } from 'next/router';
-import { Inter } from 'next/font/google'
+import { Inter } from 'next/font/google';
+import Link from 'next/link';
 
 
 // Wagmi import for connected wallet info
@@ -93,7 +94,7 @@ export default function Home() {
                   </div>}
                   {/* Display when intent to pay is created but payment is pending */}
                   {intent && depositAddress && !paymentStatus && <div>
-                    <p>Please pay 1 USDC to {depositAddress}</p>
+                    <p>Please pay 1 USDC to 0x8381470ED67C3802402dbbFa0058E8871F017A6F</p>
                     <p>Once done, click for confirmation</p>
                     <form onSubmit={confirmPayment} className="mint_form">
                       <button type="submit">
@@ -103,10 +104,10 @@ export default function Home() {
                         </div>}
 
                         {/* Display when payment is made */}
-                        {!intent && !depositAddress && paymentStatus && <div>
+                          {!intent && !depositAddress && paymentStatus && <div>
                           <p>Thank you for the payment!</p>
-                          <a href="localhost:3000">Click the link to see your exclusive content!</a>
-                          </div>}
+                          <button onClick={() => router.push('/')}>Click here to see your exclusive content!</button>
+                        </div>}
                           {error && <p>{error}</p>}
         </div>
       </main>

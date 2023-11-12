@@ -32,10 +32,10 @@ export default function Connect() {
         }
     }, [hasMounted, isConnected, connect, connectors]);
 
-    if (isConnected) {
-        router.replace('/');
-        return null;
-    }
+    // if (isConnected) {
+    //     router.replace('/');
+    //     return null;
+    // }
 
     if (!hasMounted) return null;
 

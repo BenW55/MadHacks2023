@@ -2,7 +2,7 @@
 import Image from 'next/image'
 import styles from './page.module.css'
 import { useState } from 'react';
-import PDFUploadForm from '@/components/PromptForm'; // Assuming you have updated the form component name
+import PDFUploadForm from '../components/PromptForm'; // Assuming you have updated the form component name
 export default function Home() {
     const [choices, setChoices] = useState([]);
     const [isSpinning, setIsSpinning] = useState(false);
