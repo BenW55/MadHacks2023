@@ -1,58 +1,49 @@
-/* Example CSS */
-.upload-container {
-  background: #f7f7f7;
-  border-radius: 8px;
-  padding: 20px;
-  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-  text-align: center;
-  max-width: 500px;
-  margin: auto;
+/* page.module.css */
+
+.main {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 2rem;
+  min-height: 100vh;
+  background-color: #f0f4f8;
 }
 
-.upload-title {
-  font-family: 'Helvetica Neue', sans-serif;
-  color: #333;
-  margin-bottom: 20px;
+
+.header {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative; /* Add this to contain the spinning image */
+  overflow: hidden; /* Add this to prevent the image from going out of bounds */
 }
 
-.custom-file-upload {
-  display: inline-block;
-  padding: 12px 30px;
-  cursor: pointer;
-  border-radius: 25px;
-  background: linear-gradient(45deg, #6D5DFC, #B28DFF);
-  color: white;
-  box-shadow: 0 2px 5px rgba(0,0,0,0.2);
-  transition: all 0.3s ease;
-  margin-right: 10px;
-  font-size: 15px;
+
+.title {
+  font-size: 2rem; /* Adjust size as needed */
+  margin: 0;
 }
 
-.custom-file-upload:hover {
-  background: linear-gradient(45deg, #575FDA, #9F80DB);
+/* Next.js Image component uses the .next-image class */
+.next-image {
+  display: block;
+  max-width: 100%;
+  height: auto;
+  /* Set the height to match your h1 - This might require adjusting based on your actual text size */
 }
 
-#file-upload {
-  width: 0.1px;
-  height: 0.1px;
-  opacity: 0;
-  overflow: hidden;
-  position: absolute;
-  z-index: -1;
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
 }
 
-.upload-button {
-  padding: 12px 30px;
-  cursor: pointer;
-  border-radius: 25px;
-  border: none;
-  background: #5DFC6D;
-  color: white;
-  box-shadow: 0 2px 5px rgba(0,0,0,0.2);
-  transition: all 0.3s ease;
-  font-size: 15px;
+.spinning {
+  animation: spin 2s infinite linear;
 }
 
-.upload-button:hover {
-  background: #4FCB5D;
-}

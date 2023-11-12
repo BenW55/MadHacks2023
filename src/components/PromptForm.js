@@ -1,5 +1,4 @@
 import {useState} from "react";
-import styles from "./PromptForm.module.css"
 
 function PDFUploadForm({ onSubmit }) {
     const [file, setFile] = useState(null);
@@ -25,10 +24,10 @@ function PDFUploadForm({ onSubmit }) {
     };
 
     return (
-        <form className={styles.form} onSubmit={handleSubmit}>
+        <form onSubmit={handleSubmit}>
             <label> Upload PDF</label>
             <input 
-                className={styles.input} 
+                 
                 type="file" 
                 accept="application/pdf"
                 onChange={handleFileChange}
