@@ -28,13 +28,12 @@ function PDFUploadForm({ onSubmit }) {
         <form className={styles.form} onSubmit={handleSubmit}>
             <label> Upload PDF</label>
             <input 
-            id="file-upload"
                 className={styles.input} 
                 type="file" 
                 accept="application/pdf"
                 onChange={handleFileChange}
             />
-            <input class ="upload-button" type="submit" value="Upload"/>
+            <input type="submit" value="Upload"/>
         </form>
     );
 }
