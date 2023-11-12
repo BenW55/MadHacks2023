@@ -1,28 +1,42 @@
 import {useState} from "react";
 import styles from "./PromptForm.module.css"
 
-export default function PromptForm({ onSubmit })
-{
-    const [prompt, setPrompt] = useState("");
+function PDFUploadForm({ onSubmit }) {
+    const [file, setFile] = useState(null);
+
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        if (!file) {
+            alert("Please select a PDF file first.");
+            return;
+        }
+        onSubmit(file);
+        setFile(null); // Reset the file input after submission
+    };
+
+    const handleFileChange = (e) => {
+        const uploadedFile = e.target.files[0];
+        if (uploadedFile && uploadedFile.type === "application/pdf") {
+            setFile(uploadedFile);
+        } else {
+            alert("Please upload a PDF file.");
+            setFile(null);
+        }
+    };
+
     return (
-        <form className={styles.form} onSubmit={(e) =>{
-            e.preventDefault();
-            if(prompt === "")
-            {
-                return;
-            }
-            onSubmit(prompt);
-            setPrompt("");
-        }}>
-            <label> Question</label>
+        <form className={styles.form} onSubmit={handleSubmit}>
+            <label> Upload PDF</label>
             <input 
+            id="file-upload"
                 className={styles.input} 
-                type="text" 
-                value = {prompt} 
-                onChange={(e) =>{
-                    setPrompt(e.target.value);
-                }}/>
-            <input type="submit"/>
+                type="file" 
+                accept="application/pdf"
+                onChange={handleFileChange}
+            />
+            <input class ="upload-button" type="submit" value="Upload"/>
         </form>
     );
 }
+
+export default PDFUploadForm;

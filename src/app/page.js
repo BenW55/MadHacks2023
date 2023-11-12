@@ -2,39 +2,39 @@
 import Image from 'next/image'
 import styles from './page.module.css'
 import { useState } from 'react';
-import PromptForm from '@/components/PromptForm';
-
+import PDFUploadForm from '@/components/PromptForm'; // Assuming you have updated the form component name
 export default function Home() {
+    const [choices, setChoices] = useState([]);
 
-  const [choices, setChoices] = useState([]);
+    const handlePDFSubmit = async (file) => {
+        console.log("reached");
+        console.log(file);
+        const formData = new FormData();
 
-  return (
-    <main className={styles.main}>
-      <p>Hi!</p>
-      <PromptForm
-              onSubmit={ async(prompt) => {
-                const response =  await fetch("/api/chat-gpt", {
-                  method: "POST",
-                  headers: {
-                    "Content-Type": "application/json",
-                  },
-                  body: JSON.stringify({
-                    prompt: prompt,
-        
-                  }),
-                });
-                const result = await response.json();
-                setChoices(result.choices)
-        
-              }}/>
+        formData.append('files', file);
+        console.log(formData.files);
+        try {
+            const response = await fetch("http://localhost:4000/chat-gpt", {
+                method: "POST",
+                
+                body: formData
+            });
+            const result = await response.json();
+            console.log(result);
+            setChoices(result.choices);
+        } catch (error) {
+            console.error("An error occurred while uploading the file:", error);
+        }
+    };
 
-      {choices.map(choice => {
-        return (
-          <p kep = {choice.index}>{choice.message.content}</p>
-        )
-      })
+    return (
+        <main className={styles.main}>
+            <p>Hi!</p>
+            <PDFUploadForm onSubmit={handlePDFSubmit} />
 
-      }
-    </main>
-  )
+            {choices.map((choice, index) => (
+                <p key={index}>{choice.message.content}</p> // Fixed the key prop
+            ))}
+        </main>
+    );
 }
